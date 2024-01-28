@@ -135,9 +135,10 @@ void EspMQTTClient::enableOTA(const char *password, const uint16_t port)
   if (_mqttClientName != NULL)
     ArduinoOTA.setHostname(_mqttClientName);
 
-  if (password != NULL)
-    ArduinoOTA.setPassword(password);
-  else if (_mqttPassword != NULL)
+  if (password != NULL) {
+    if ( *password != 0)
+      ArduinoOTA.setPassword(password);
+  } else if (_mqttPassword != NULL)
     ArduinoOTA.setPassword(_mqttPassword);
 
   if (port)
