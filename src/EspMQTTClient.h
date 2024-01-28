@@ -65,8 +65,10 @@ private:
   bool _mqttLastWillRetain;
   unsigned int _failedMQTTConnectionAttemptCount;
 
+public:    // for future use. If we will need to access _mqttClient
   PubSubClient _mqttClient;
 
+private:
   struct TopicSubscriptionRecord {
     String topic;
     MessageReceivedCallback callback;
